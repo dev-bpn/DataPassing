@@ -6,11 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements DataWithinSameActivity{
+public class MainActivity extends AppCompatActivity{
 
-    DataWithinSameActivity dataInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +22,9 @@ public class MainActivity extends AppCompatActivity implements DataWithinSameAct
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                dataInterface.passData("Here goes my data");
 
             }
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        dataInterface = this;
-    }
-
-    @Override
-    public void passData(String string) {
-
-        Toast.makeText(this , string , Toast.LENGTH_LONG).show();
-
-    }
 }
