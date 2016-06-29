@@ -1,24 +1,31 @@
 package datapassing.bpn.com.datapassing;
 
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyFragment extends Fragment implements DataInterface{
+public class MyFragment extends Fragment{
 
+    MyInterface myInterface;
 
     public MyFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        myInterface = (MyInterface) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,8 +34,10 @@ public class MyFragment extends Fragment implements DataInterface{
         return inflater.inflate(R.layout.fragment_my, container, false);
     }
 
+
     @Override
-    public void responseData(String string) {
-        Toast.makeText(getActivity() , string , Toast.LENGTH_LONG).show();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myInterface.onDataSend("Here is mero data");
     }
 }
