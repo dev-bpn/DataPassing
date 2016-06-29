@@ -6,11 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements DataInterface{
+public class MainActivity extends AppCompatActivity{
 
-    DataInterface dataInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,19 +22,9 @@ public class MainActivity extends AppCompatActivity implements DataInterface{
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                dataInterface.getAndPostData("The data with an interface");
+
             }
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        dataInterface = this;
-    }
-
-    @Override
-    public void getAndPostData(String data) {
-        Toast.makeText(this , data , Toast.LENGTH_LONG).show();
-    }
 }
