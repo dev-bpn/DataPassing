@@ -23,8 +23,25 @@ public class MainActivity extends AppCompatActivity{
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
+                getSupportFragmentManager().beginTransaction().add(R.id.container , new MyFragment() , "TAG").commit();
+
             }
         });
+
+
+        /**
+         *
+         * Here to pass data from Activity to fragment we can use these methods:
+         * 1. newInstance(Object obj)
+         * 2. new MyFragment.methodName()
+         * 3. Directly through arguments
+         *
+         * */
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 }
