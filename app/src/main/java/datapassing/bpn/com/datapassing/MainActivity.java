@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements OnListClick {
+
+    private FragmentB fragmentB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,19 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+
+        initFrag();
     }
 
+    @Override
+    public void onDataSend(String string) {
+        fragmentB.onDataSend(string);
+
+
+    }
+
+    private void initFrag() {
+        fragmentB = new FragmentB();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentB, fragmentB, "").commit();
+    }
 }
